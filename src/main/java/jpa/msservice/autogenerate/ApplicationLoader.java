@@ -99,11 +99,12 @@ public class ApplicationLoader implements CommandLineRunner {
 
             }
 
+            Integer nrotar = randomId();
             if(cuentas.size() > 0) {
                 for (int i = 0; i < random.nextInt(5); i++) {
                     MctaMaestroTarjetaEntity tarjeta = objMapper.newInstanceOfT(MctaMaestroTarjetaEntity.class);
                     tarjeta.setIdTarjeta(randomId());
-
+                    tarjeta.setNumeroTarjeta(Integer.toString(nrotar + i);
                     if(random.nextBoolean()) {
                         McliClienteEntity adicional = getClienteRandom(clientes);
                         if (adicional.getIdCliente() != cliente.getIdCliente()){

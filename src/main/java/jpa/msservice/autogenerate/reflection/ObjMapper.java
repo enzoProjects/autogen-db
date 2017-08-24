@@ -31,11 +31,11 @@ public class ObjMapper {
                         field.set(obj, Integer.toString(random.nextInt(9)));
                     } else if (fieldClazz.equals(Date.class)) {
                         field.set(obj, new Date(Calendar.getInstance().getTime().getTime()));
-                    }// else if (fieldClazz.equals(BigInteger.class)) {
-                    //    field.set(obj, BigInteger.valueOf(random.nextLong()));
-                    //} else if (fieldClazz.equals(BigDecimal.class)) {
-                    //    field.set(obj, BigDecimal.valueOf(random.nextFloat()));
-                    //}
+                    } else if (fieldClazz.equals(BigInteger.class)) {
+                        field.set(obj, BigInteger.valueOf(1L));
+                    } else if (fieldClazz.equals(BigDecimal.class)) {
+                        field.set(obj, new BigDecimal(1L));
+                    }
                 } catch (Exception ex) {
                     ex.printStackTrace();
                 }
