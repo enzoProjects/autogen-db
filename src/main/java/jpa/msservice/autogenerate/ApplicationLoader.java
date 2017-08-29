@@ -38,7 +38,8 @@ public class ApplicationLoader implements CommandLineRunner {
     }
 
     private static final Integer CLIENTES_SIZE = 100;
-    private static final String ENTIDAD = "54";
+    private static final String ENTIDAD = "010";
+    private static final Integer ID_USUARIO = 100;
 
     private final Random random = new Random();
 
@@ -60,6 +61,7 @@ public class ApplicationLoader implements CommandLineRunner {
             cliente.setIdCliente(randomId());
             cliente.setEntidad(ENTIDAD);
             cliente.setDocumentoIdentificacion(randomRut());
+            cliente.setIdUsuario(ID_USUARIO);
 
 
             if (random.nextBoolean()) {
@@ -69,6 +71,7 @@ public class ApplicationLoader implements CommandLineRunner {
                 McliEmpresaEntity empresa = objMapper.newInstanceOfT(McliEmpresaEntity.class);
                 empresa.setIdCliente(cliente.getIdCliente());
                 empresa.setEntidad(ENTIDAD);
+                empresa.setIdUsuario(ID_USUARIO);
                 empresa.setNombreFantasia("empresa");
                 empresaDao.save(empresa);
             } else {
@@ -79,6 +82,7 @@ public class ApplicationLoader implements CommandLineRunner {
                 persona.setIdCliente(cliente.getIdCliente());
                 persona.setEntidad(ENTIDAD);
                 persona.setPrimerNombre("primerNombre");
+                persona.setIdUsuario(ID_USUARIO);
                 persona.setApellidoPaterno("apellidoPaterno");
                 personaDao.save(persona);
             }
@@ -104,6 +108,7 @@ public class ApplicationLoader implements CommandLineRunner {
                 for (int i = 0; i < random.nextInt(5); i++) {
                     MctaMaestroTarjetaEntity tarjeta = objMapper.newInstanceOfT(MctaMaestroTarjetaEntity.class);
                     tarjeta.setIdTarjeta(randomId());
+                    tarjeta.setIdUsuario(ID_USUARIO);
                     tarjeta.setNumeroTarjeta(Integer.toString(nrotar + i));
                     if(random.nextBoolean()) {
                         McliClienteEntity adicional = getClienteRandom(clientes);
